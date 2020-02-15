@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.sda.project.entity.Privilage;
 import pl.sda.project.entity.UserEntity;
 import pl.sda.project.repository.UserRepository;
 
@@ -23,7 +24,7 @@ public class UserService implements UserDetailsService {
     public void save(UserEntity userEntity) {
         String password = passwordEncoder.encode(userEntity.getPassword());
         userEntity.setPassword(password);
-        userEntity.setPrivilage("user");
+        userEntity.setPrivilage(Privilage.USER);
         userRepository.save(userEntity);
     }
 
