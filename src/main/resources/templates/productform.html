@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-12">
             <h2>Utworz nowy produkt</h2>
-            <form th:action="@{/product/save}" th:object="${product}" method="post">
+            <form th:action="@{/productEntity/save}" th:object="${productEntity}" method="post">
                 <p>Name: <input type="text" th:field="*{name}" /></p>
                 <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
             </form>

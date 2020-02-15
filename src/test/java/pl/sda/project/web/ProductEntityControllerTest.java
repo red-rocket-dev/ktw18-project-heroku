@@ -9,20 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import pl.sda.project.entity.Product;
+import pl.sda.project.entity.ProductEntity;
 import pl.sda.project.repository.ProductRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
-public class ProductControllerTest {
+public class ProductEntityControllerTest {
     public static final String EXAMPLE_PRODUCT_NAME = "Suszarka";
     @Autowired
     private ProductRepository productRepository;
@@ -33,7 +30,7 @@ public class ProductControllerTest {
     @Test
     public void givenDataIsPresentWhenListIsRequestedThenPageContainsPrdName() throws Exception {
         //given
-        Product testPrd = new Product();
+        ProductEntity testPrd = new ProductEntity();
         testPrd.setName(EXAMPLE_PRODUCT_NAME);
         productRepository.save(testPrd);
         //when

@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.sda.project.entity.Product;
+import pl.sda.project.entity.ProductEntity;
 import pl.sda.project.repository.ProductRepository;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ProductServiceTest {
+public class ProductEntityServiceTest {
     public static final String MY_PRODUCT_NAME = "my product";
     public static final String BRAND = "Dell";
     public static final String MODEL = "XPS";
@@ -32,14 +32,14 @@ public class ProductServiceTest {
     @Test
     public void givenProductInDbThenProductCanBeRetrived() {
         //given
-        Product product = new Product();
-        product.setName(MY_PRODUCT_NAME);
-        productRepository.save(product);
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(MY_PRODUCT_NAME);
+        productRepository.save(productEntity);
         //when
-        List<Product> products = productService.findAll();
+        List<ProductEntity> productEntities = productService.findAll();
         //then
-        assertThat(products).hasSize(1);
-        assertThat(products.get(0).getName()).isEqualTo(MY_PRODUCT_NAME);
+        assertThat(productEntities).hasSize(1);
+        assertThat(productEntities.get(0).getName()).isEqualTo(MY_PRODUCT_NAME);
 
     }
 
@@ -48,9 +48,9 @@ public class ProductServiceTest {
         //when
         productService.saveBrandModel(BRAND, MODEL);
         //then
-        List<Product> products = productRepository.findAll();
+        List<ProductEntity> productEntities = productRepository.findAll();
 
-        assertThat(products).hasSize(1);
-        assertThat(products.get(0).getName()).isEqualTo(BRAND + " - " + MODEL);
+        assertThat(productEntities).hasSize(1);
+        assertThat(productEntities.get(0).getName()).isEqualTo(BRAND + " - " + MODEL);
     }
 }

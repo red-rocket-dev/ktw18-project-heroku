@@ -1,7 +1,7 @@
 package pl.sda.project.service;
 
 import org.springframework.stereotype.Service;
-import pl.sda.project.entity.Product;
+import pl.sda.project.entity.ProductEntity;
 import pl.sda.project.repository.ProductRepository;
 
 import java.util.List;
@@ -14,21 +14,21 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public void save(Product prd) {
+    public void save(ProductEntity prd) {
         productRepository.save(prd);
     }
 
     public void saveBrandModel(String brand, String model) {
-        Product product = new Product();
-        product.setName(String.format("%s - %s", brand, model));
-        productRepository.save(product);
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(String.format("%s - %s", brand, model));
+        productRepository.save(productEntity);
     }
 
-    public List<Product> findAll() {
+    public List<ProductEntity> findAll() {
         return productRepository.findAll();
     }
 
-    public Product findById(Long id) {
+    public ProductEntity findById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No product with id"));
     }

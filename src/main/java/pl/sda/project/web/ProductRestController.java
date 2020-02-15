@@ -3,7 +3,7 @@ package pl.sda.project.web;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.sda.project.entity.Product;
+import pl.sda.project.entity.ProductEntity;
 import pl.sda.project.service.ProductService;
 
 @RestController
@@ -15,8 +15,8 @@ public class ProductRestController {
     }
 
     @PostMapping("/rest/product")
-    public ResponseEntity<Void> postForm(Product product) {
-        productService.save(product);
+    public ResponseEntity<Void> postForm(ProductEntity productEntity) {
+        productService.save(productEntity);
         return ResponseEntity.ok().build();
     }
 }

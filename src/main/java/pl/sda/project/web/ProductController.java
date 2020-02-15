@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.sda.project.entity.Product;
+import pl.sda.project.entity.ProductEntity;
 import pl.sda.project.repository.ProductRepository;
 
 import java.util.HashMap;
@@ -47,10 +47,10 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public ModelAndView postSaveProduct(@ModelAttribute Product product) {
-        productRepository.save(product);
+    public ModelAndView postSaveProduct(@ModelAttribute ProductEntity productEntity) {
+        productRepository.save(productEntity);
         Map<String, Object> model = new HashMap<>();
-        model.put("created", product);
+        model.put("created", productEntity);
         return new ModelAndView("productCreated", model);
     }
 
@@ -58,7 +58,7 @@ public class ProductController {
     public ModelAndView getSaveProduct() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("productform");
-        modelAndView.getModel().put("product", new Product());
+        modelAndView.getModel().put("product", new ProductEntity());
 
         return modelAndView;
     }

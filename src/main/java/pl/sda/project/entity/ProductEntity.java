@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -15,7 +15,7 @@ public class Product {
         return id;
     }
 
-    public Product setId(Long id) {
+    public ProductEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -24,7 +24,7 @@ public class Product {
         return name;
     }
 
-    public Product setName(String name) {
+    public ProductEntity setName(String name) {
         this.name = name;
         return this;
     }
