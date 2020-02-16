@@ -16,6 +16,7 @@ public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String mail;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -56,6 +57,7 @@ public class UserEntity implements UserDetails {
         }
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
